@@ -369,26 +369,12 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
 /* ================= CORNER FLORAL ORNAMENTS ================= */
-.corner-deco{position:absolute;width:180px;height:180px;pointer-events:none;z-index:0;opacity:.85}
-.corner-deco svg{width:100%;height:100%;display:block}
-.corner-deco.tl{top:-10px;left:-10px}
-.corner-deco.tr{top:-10px;right:-10px;transform:scaleX(-1)}
-.corner-deco.bl{bottom:-10px;left:-10px;transform:scaleY(-1)}
-.corner-deco.br{bottom:-10px;right:-10px;transform:scale(-1,-1)}
 .corner-rose{position:absolute;top:2px;right:2px;width:84px;height:84px;pointer-events:none;z-index:0}
 .corner-rose svg{width:100%;height:100%;display:block}
-#hero .corner-deco{width:150px;height:150px}
 #hero .corner-rose{width:70px;height:70px}
-.rsvp-card .corner-deco{width:110px;height:110px;opacity:.55}
 @media(max-width:600px){
-  .corner-deco{width:110px;height:110px}
   .corner-rose{width:52px;height:52px}
-  #hero .corner-deco{width:96px;height:96px}
   #hero .corner-rose{width:46px;height:46px}
-  .rsvp-card .corner-deco{width:72px;height:72px}
-}
-@media(max-width:380px){
-  #intro .corner-deco.bl,#intro .corner-deco.br{display:none}
 }
 
 /* ============ MOBILE RESPONSIVE ============ */
@@ -475,21 +461,6 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 <!-- ================= REUSABLE BOTANICAL ARTWORK ================= -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="leafBranch" viewBox="0 0 220 220">
-      <g fill="none">
-        <path d="M14 210 C46 188, 64 158, 74 128" stroke="var(--olive)" stroke-width="2" opacity=".45"/>
-        <ellipse cx="32" cy="196" rx="24" ry="11" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-32 32 196)"/>
-        <ellipse cx="58" cy="176" rx="21" ry="9.5" fill="var(--sage)" stroke="var(--olive-deep)" stroke-width="1" transform="rotate(-14 58 176)"/>
-        <ellipse cx="82" cy="150" rx="19" ry="8.5" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-46 82 150)"/>
-        <ellipse cx="103" cy="120" rx="17" ry="7.5" fill="var(--sage)" stroke="var(--olive-deep)" stroke-width="1" transform="rotate(-10 103 120)"/>
-        <ellipse cx="122" cy="94" rx="15" ry="6.5" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-52 122 94)"/>
-        <ellipse cx="142" cy="68" rx="13" ry="6" fill="var(--sage)" stroke="var(--olive-deep)" stroke-width="1" transform="rotate(-20 142 68)"/>
-        <ellipse cx="158" cy="44" rx="11" ry="5" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-40 158 44)"/>
-        <circle cx="62" cy="152" r="4.2" fill="var(--gold-light)"/>
-        <circle cx="97" cy="106" r="3.6" fill="var(--gold)"/>
-        <circle cx="133" cy="58" r="3" fill="var(--gold-light)"/>
-      </g>
-    </symbol>
     <symbol id="roseBloom" viewBox="0 0 100 100">
       <circle cx="50" cy="50" r="36" fill="var(--paper)" stroke="var(--sage)" stroke-width="1" opacity=".9"/>
       <path d="M50 18 C66 24 74 40 69 53 C64 66 50 72 50 72 C50 72 36 66 31 53 C26 40 34 24 50 18Z" fill="var(--paper)" stroke="var(--olive)" stroke-width="1"/>
@@ -501,11 +472,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 
 <!-- ================= ENVELOPE INTRO ================= -->
 <div id="intro">
-  <div class="corner-deco tl"><svg><use href="#leafBranch"/></svg></div>
-  <div class="corner-deco tr"><svg><use href="#leafBranch"/></svg></div>
   <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
-  <div class="corner-deco bl"><svg><use href="#leafBranch"/></svg></div>
-  <div class="corner-deco br"><svg><use href="#leafBranch"/></svg></div>
 
   <div class="ornament"><span class="heart">♥</span></div>
   <div class="cordial">You Are Cordially Invited</div>
@@ -541,11 +508,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 
   <!-- HERO -->
   <section id="hero">
-    <div class="corner-deco tl"><svg><use href="#leafBranch"/></svg></div>
-    <div class="corner-deco tr"><svg><use href="#leafBranch"/></svg></div>
     <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
-    <div class="corner-deco bl"><svg><use href="#leafBranch"/></svg></div>
-    <div class="corner-deco br"><svg><use href="#leafBranch"/></svg></div>
     <div class="hero-eyebrow reveal">Together With Their Families</div>
     <h1 class="hero-names reveal">Kavini</h1>
     <div class="hero-together reveal">
@@ -718,8 +681,6 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
     </div>
     <p class="rsvp-quote reveal">“We are so grateful to have you as part of our story, and we cannot wait to celebrate this joyful day surrounded by the people we love most.”</p>
     <div class="rsvp-card reveal">
-      <div class="corner-deco tl"><svg><use href="#leafBranch"/></svg></div>
-      <div class="corner-deco br"><svg><use href="#leafBranch"/></svg></div>
       <div class="rsvp-deadline">Kindly RSVP by <b>16th August 2026</b></div>
       <div class="rsvp-sub">Your presence would mean the world to us — kindly let us know you're coming.</div>
 
