@@ -10,19 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --sage:#a9bd9a;
-  --sage-light:#cdd9c3;
-  --sage-pale:#e9efe4;
-  --olive:#5c6b4e;
-  --olive-deep:#42503a;
-  --cream:#faf7ef;
-  --cream-deep:#f3eddd;
-  --paper:#fdfcf8;
-  --gold:#b99a45;
-  --gold-light:#d4bc74;
-  --gold-deep:#96793a;
-  --ink:#3d4437;
-  --shadow:0 18px 50px rgba(66,80,58,.14);
+  /* palette matched to the printed invitation card */
+  --sage:#aebfa0;          /* card's green band */
+  --sage-light:#c9d4b8;
+  --sage-pale:#e8ecdf;
+  --band:#a8bc9b;          /* "Mr./Mrs." strip green */
+  --olive:#6b7257;         /* card body olive */
+  --olive-deep:#5a614a;    /* "Kavini/Nuwan" script green */
+  --cream:#f4f3ee;         /* textured paper white */
+  --cream-deep:#ecebe4;
+  --paper:#fbfaf7;
+  --gold:#c9a227;          /* "Grand" gold */
+  --gold-light:#e0c05e;
+  --gold-deep:#9a7b1e;
+  --maroon:#7b2f26;        /* "Heritage" maroon */
+  --ink:#4a5040;
+  --shadow:0 18px 50px rgba(90,97,74,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -38,12 +41,13 @@ body::before{
 #intro{
   position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
   background:
-    radial-gradient(circle at 50% 30%, #fdfaf2 0%, var(--cream) 55%, #f1ead8 100%);
+    linear-gradient(90deg, transparent 0%, transparent 78%, rgba(174,191,160,.5) 78%, rgba(174,191,160,.5) 92%, transparent 92%),
+    radial-gradient(circle at 50% 30%, #fbfaf6 0%, var(--cream) 55%, #e9ece0 100%);
   transition:opacity 1.3s ease, visibility 1.3s;
 }
 #intro::before{ /* subtle dotted pattern like reference */
   content:"";position:absolute;inset:0;opacity:.35;
-  background-image:radial-gradient(#e7dfc8 1.6px, transparent 1.6px);
+  background-image:radial-gradient(#d5dcc6 1.6px, transparent 1.6px);
   background-size:34px 34px;
 }
 #intro.hidden{opacity:0;visibility:hidden;pointer-events:none}
@@ -207,9 +211,11 @@ section{position:relative;padding:92px 22px;max-width:880px;margin:0 auto;text-a
 .ev-chip{display:inline-block;margin-top:12px;padding:6px 16px;border-radius:30px;background:var(--sage-pale);border:1px solid var(--sage-light);font-size:.74rem;color:var(--olive-deep)}
 /* venue strip */
 .venue-strip{
-  margin-top:26px;background:linear-gradient(150deg,var(--olive) 0%,#6d7d5c 100%);color:#fbfbf5;border-radius:14px;
+  margin-top:26px;background:linear-gradient(150deg,var(--band) 0%,#b9c9aa 100%);color:var(--olive-deep);border-radius:14px;
   padding:38px 30px;box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
+.venue-name .h-heritage{color:var(--maroon)}
+.venue-name .h-grand{color:var(--gold-deep)}
 .venue-strip::before{content:"";position:absolute;right:-40px;top:-40px;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.06)}
 .venue-strip::after{content:"";position:absolute;left:-50px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.05)}
 .venue-name{font-family:'Great Vibes',cursive;font-size:2.1rem}
@@ -223,7 +229,7 @@ section{position:relative;padding:92px 22px;max-width:880px;margin:0 auto;text-a
 .btn-pill svg{width:16px;height:16px}
 .btn-pill:hover{transform:translateY(-2px)}
 .btn-gold{color:#3d3116;background:linear-gradient(135deg,var(--gold-light),var(--gold));box-shadow:0 8px 18px rgba(60,45,10,.3)}
-.btn-ghost{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45)}
+.btn-ghost{color:var(--olive-deep);background:rgba(255,255,255,.45);border:1px solid var(--olive)}
 
 /* CALENDAR VIEW */
 .cal-card{
@@ -615,7 +621,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
       </div>
 
       <div class="venue-strip reveal">
-        <div class="venue-name">Heritage Grand — Badulla</div>
+        <div class="venue-name"><span class="h-heritage">Heritage</span> <span class="h-grand">Grand</span> — Badulla</div>
         <div class="venue-sub">CITRINE PALACE</div>
         <div class="venue-btns">
           <a class="btn-pill btn-gold" href="https://www.google.com/maps/search/?api=1&query=Heritage+Grand+Badulla" target="_blank" rel="noopener">
@@ -876,4 +882,57 @@ document.getElementById('icsBtn').addEventListener('click', function(){
     'DTSTART:20260911T033000Z',
     'DTEND:20260911T100000Z',
     'SUMMARY:Kavini & Nuwan — Wedding',
-    'DESCRIPTION:Wedding of Kavini & Nuwan. Poruwa Ceremony at 10:02 AM. RSVP by 16 Aug 2026: 071 930 019
+    'DESCRIPTION:Wedding of Kavini & Nuwan. Poruwa Ceremony at 10:02 AM. RSVP by 16 Aug 2026: 071 930 0198 (Kavini) / 071 807 7726 (Mrs. Chandrika)',
+    'LOCATION:Heritage Grand\, Badulla (Citrine Palace)',
+    'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:Kavini & Nuwan Wedding tomorrow!','END:VALARM',
+    'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  var blob = new Blob([ics], {type:'text/calendar'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Kavini-Nuwan-Wedding.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+});
+
+/* ---------- RSVP form ---------- */
+var attending = true, guests = 1;
+var btnAccept = document.getElementById('btnAccept');
+var btnDecline = document.getElementById('btnDecline');
+btnAccept.addEventListener('click', function(){ attending = true;  btnAccept.classList.add('active'); btnDecline.classList.remove('active'); });
+btnDecline.addEventListener('click', function(){ attending = false; btnDecline.classList.add('active'); btnAccept.classList.remove('active'); });
+document.getElementById('guestMinus').addEventListener('click', function(){ if(guests>1) guests--; renderGuests(); });
+document.getElementById('guestPlus').addEventListener('click', function(){ if(guests<10) guests++; renderGuests(); });
+function renderGuests(){ document.getElementById('guestCount').textContent = guests + (guests===1?' Guest':' Guests'); }
+
+document.getElementById('rsvpForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('rsvpName').value.trim();
+  var phone = document.getElementById('rsvpPhone').value.trim();
+  if(!name){ document.getElementById('rsvpName').focus(); return; }
+  if(!phone){ document.getElementById('rsvpPhone').focus(); return; }
+  var msg = document.getElementById('rsvpMsg').value.trim();
+  var text = '💌 RSVP — Kavini & Nuwan Wedding (11.09.2026)\n'
+    + '👤 Name: ' + name + '\n'
+    + '📞 Phone: ' + phone + '\n'
+    + '💍 Attending: ' + (attending ? 'Joyfully Accept ✓' : 'Regretfully Decline ✗') + '\n'
+    + '👥 Guests: ' + guests
+    + (msg ? '\n💬 Message: ' + msg : '');
+  window.open('https://wa.me/94719300198?text=' + encodeURIComponent(text), '_blank');
+  document.getElementById('rsvpSent').style.display = 'block';
+});
+
+/* ---------- Falling petals ---------- */
+function startPetals(){
+  var colors = ['#cdd9c3','#e9efe4','#f6f4ec','#b9cba9','#e8dfc2'];
+  setInterval(function(){
+    if(document.hidden) return;
+    var p = document.createElement('div');
+    p.className = 'petal';
+    var s = 8 + Math.random()*10;
+    p.style.cssText = 'left:'+(Math.random()*100)+'vw;width:'+s+'px;height:'+(s*0.7)+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';border-radius:60% 0 60% 0;animation-duration:'+(7+Math.random()*6)+'s';
+    document.body.appendChild(p);
+    setTimeout(function(){ p.remove(); }, 14000);
+  }, 1400);
+}
+</script>
+</body>
+</html>
