@@ -139,7 +139,7 @@ section{position:relative;padding:92px 22px;max-width:880px;margin:0 auto;text-a
 
 /* HERO */
 #hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:110px;padding-bottom:110px}
-.hero-band{position:fixed;top:0;right:6%;width:74px;height:100%;background:var(--sage-light);opacity:.4;z-index:0;pointer-events:none}
+.hero-band{position:fixed;top:0;right:6%;width:74px;height:100%;background:var(--band);opacity:.55;z-index:0;pointer-events:none}
 .hero-eyebrow{letter-spacing:.5em;font-size:.72rem;text-transform:uppercase;color:var(--olive);margin-bottom:26px}
 .hero-names{
   font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(3.4rem,13vw,6rem);line-height:1.12;
@@ -368,6 +368,29 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 .petal{position:fixed;top:-30px;z-index:2;pointer-events:none;opacity:.7;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
+/* ================= CORNER FLORAL ORNAMENTS ================= */
+.corner-deco{position:absolute;width:180px;height:180px;pointer-events:none;z-index:0;opacity:.85}
+.corner-deco svg{width:100%;height:100%;display:block}
+.corner-deco.tl{top:-10px;left:-10px}
+.corner-deco.tr{top:-10px;right:-10px;transform:scaleX(-1)}
+.corner-deco.bl{bottom:-10px;left:-10px;transform:scaleY(-1)}
+.corner-deco.br{bottom:-10px;right:-10px;transform:scale(-1,-1)}
+.corner-rose{position:absolute;top:2px;right:2px;width:84px;height:84px;pointer-events:none;z-index:0}
+.corner-rose svg{width:100%;height:100%;display:block}
+#hero .corner-deco{width:150px;height:150px}
+#hero .corner-rose{width:70px;height:70px}
+.rsvp-card .corner-deco{width:110px;height:110px;opacity:.55}
+@media(max-width:600px){
+  .corner-deco{width:110px;height:110px}
+  .corner-rose{width:52px;height:52px}
+  #hero .corner-deco{width:96px;height:96px}
+  #hero .corner-rose{width:46px;height:46px}
+  .rsvp-card .corner-deco{width:72px;height:72px}
+}
+@media(max-width:380px){
+  #intro .corner-deco.bl,#intro .corner-deco.br{display:none}
+}
+
 /* ============ MOBILE RESPONSIVE ============ */
 @media(max-width:768px){
   .hero-band{display:none}
@@ -449,8 +472,41 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 </head>
 <body>
 
+<!-- ================= REUSABLE BOTANICAL ARTWORK ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="leafBranch" viewBox="0 0 220 220">
+      <g fill="none">
+        <path d="M14 210 C46 188, 64 158, 74 128" stroke="var(--olive)" stroke-width="2" opacity=".45"/>
+        <ellipse cx="32" cy="196" rx="24" ry="11" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-32 32 196)"/>
+        <ellipse cx="58" cy="176" rx="21" ry="9.5" fill="var(--sage)" stroke="var(--olive-deep)" stroke-width="1" transform="rotate(-14 58 176)"/>
+        <ellipse cx="82" cy="150" rx="19" ry="8.5" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-46 82 150)"/>
+        <ellipse cx="103" cy="120" rx="17" ry="7.5" fill="var(--sage)" stroke="var(--olive-deep)" stroke-width="1" transform="rotate(-10 103 120)"/>
+        <ellipse cx="122" cy="94" rx="15" ry="6.5" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-52 122 94)"/>
+        <ellipse cx="142" cy="68" rx="13" ry="6" fill="var(--sage)" stroke="var(--olive-deep)" stroke-width="1" transform="rotate(-20 142 68)"/>
+        <ellipse cx="158" cy="44" rx="11" ry="5" fill="var(--sage-light)" stroke="var(--olive)" stroke-width="1" transform="rotate(-40 158 44)"/>
+        <circle cx="62" cy="152" r="4.2" fill="var(--gold-light)"/>
+        <circle cx="97" cy="106" r="3.6" fill="var(--gold)"/>
+        <circle cx="133" cy="58" r="3" fill="var(--gold-light)"/>
+      </g>
+    </symbol>
+    <symbol id="roseBloom" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="36" fill="var(--paper)" stroke="var(--sage)" stroke-width="1" opacity=".9"/>
+      <path d="M50 18 C66 24 74 40 69 53 C64 66 50 72 50 72 C50 72 36 66 31 53 C26 40 34 24 50 18Z" fill="var(--paper)" stroke="var(--olive)" stroke-width="1"/>
+      <path d="M50 29 C59 33 63 43 61 51 C59 59 50 64 50 64 C50 64 41 59 39 51 C37 43 41 33 50 29Z" fill="var(--cream-deep)" stroke="var(--gold-light)" stroke-width=".8"/>
+      <circle cx="50" cy="48" r="6" fill="var(--gold)"/>
+    </symbol>
+  </defs>
+</svg>
+
 <!-- ================= ENVELOPE INTRO ================= -->
 <div id="intro">
+  <div class="corner-deco tl"><svg><use href="#leafBranch"/></svg></div>
+  <div class="corner-deco tr"><svg><use href="#leafBranch"/></svg></div>
+  <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+  <div class="corner-deco bl"><svg><use href="#leafBranch"/></svg></div>
+  <div class="corner-deco br"><svg><use href="#leafBranch"/></svg></div>
+
   <div class="ornament"><span class="heart">♥</span></div>
   <div class="cordial">You Are Cordially Invited</div>
 
@@ -485,6 +541,11 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 
   <!-- HERO -->
   <section id="hero">
+    <div class="corner-deco tl"><svg><use href="#leafBranch"/></svg></div>
+    <div class="corner-deco tr"><svg><use href="#leafBranch"/></svg></div>
+    <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+    <div class="corner-deco bl"><svg><use href="#leafBranch"/></svg></div>
+    <div class="corner-deco br"><svg><use href="#leafBranch"/></svg></div>
     <div class="hero-eyebrow reveal">Together With Their Families</div>
     <h1 class="hero-names reveal">Kavini</h1>
     <div class="hero-together reveal">
@@ -657,10 +718,21 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
     </div>
     <p class="rsvp-quote reveal">“We are so grateful to have you as part of our story, and we cannot wait to celebrate this joyful day surrounded by the people we love most.”</p>
     <div class="rsvp-card reveal">
+      <div class="corner-deco tl"><svg><use href="#leafBranch"/></svg></div>
+      <div class="corner-deco br"><svg><use href="#leafBranch"/></svg></div>
       <div class="rsvp-deadline">Kindly RSVP by <b>16th August 2026</b></div>
       <div class="rsvp-sub">Your presence would mean the world to us — kindly let us know you're coming.</div>
 
       <form class="rsvp-form" id="rsvpForm" novalidate>
+        <label class="f-label" for="rsvpTitle">Address As</label>
+        <select class="f-input" id="rsvpTitle" aria-label="Address as">
+          <option>Mr.</option>
+          <option>Mrs.</option>
+          <option selected>Mr. &amp; Mrs.</option>
+          <option>Miss.</option>
+          <option>Family of</option>
+        </select>
+
         <label class="f-label" for="rsvpName">Full Name <span class="req">*</span></label>
         <input class="f-input" id="rsvpName" type="text" placeholder="Your full name" required>
 
@@ -905,13 +977,14 @@ function renderGuests(){ document.getElementById('guestCount').textContent = gue
 
 document.getElementById('rsvpForm').addEventListener('submit', function(e){
   e.preventDefault();
+  var title = document.getElementById('rsvpTitle').value;
   var name = document.getElementById('rsvpName').value.trim();
   var phone = document.getElementById('rsvpPhone').value.trim();
   if(!name){ document.getElementById('rsvpName').focus(); return; }
   if(!phone){ document.getElementById('rsvpPhone').focus(); return; }
   var msg = document.getElementById('rsvpMsg').value.trim();
   var text = '💌 RSVP — Kavini & Nuwan Wedding (11.09.2026)\n'
-    + '👤 Name: ' + name + '\n'
+    + '👤 Name: ' + title + ' ' + name + '\n'
     + '📞 Phone: ' + phone + '\n'
     + '💍 Attending: ' + (attending ? 'Joyfully Accept ✓' : 'Regretfully Decline ✗') + '\n'
     + '👥 Guests: ' + guests
