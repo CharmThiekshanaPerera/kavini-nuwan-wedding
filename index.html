@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kavini &amp; Nuwan — Wedding Invitation</title>
 <meta name="description" content="You are invited to the wedding of Kavini & Nuwan — 11 September 2026, Heritage Grand Badulla.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,7 +152,7 @@ section{position:relative;padding:92px 22px;max-width:880px;margin:0 auto;text-a
 .hero-date-chip{
   display:inline-block;margin-top:34px;padding:14px 36px;border:1px solid var(--sage);
   border-radius:50px;font-family:'Cormorant Garamond',serif;font-size:1.15rem;letter-spacing:.3em;color:var(--olive-deep);
-  background:rgba(255,255,255,.6);backdrop-filter:blur(3px);
+  background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
 }
 .scroll-hint{margin-top:52px;color:var(--sage);animation:bob 2.2s infinite ease-in-out}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
@@ -370,28 +370,36 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 
 /* ================= AMBIENT BACKGROUND ROSES ================= */
 .bg-roses{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.bg-rose{position:absolute;opacity:.14;filter:blur(.3px)}
-.bg-rose.r1{top:-60px;left:-70px;width:320px;height:320px;transform:rotate(-12deg)}
-.bg-rose.r2{top:18%;right:-90px;width:260px;height:260px;transform:rotate(18deg)}
-.bg-rose.r3{bottom:6%;left:-80px;width:300px;height:300px;transform:rotate(8deg)}
-.bg-rose.r4{bottom:-90px;right:-60px;width:340px;height:340px;transform:rotate(-20deg)}
+.bg-rose{position:absolute;width:280px;height:auto;opacity:.16;filter:blur(.3px)}
+.bg-rose.r1{top:-40px;left:-70px;transform:rotate(150deg)}
+.bg-rose.r2{top:16%;right:-90px;width:230px;transform:rotate(-70deg) scaleX(-1)}
+.bg-rose.r3{bottom:0;left:-90px;width:260px;transform:rotate(-8deg) scaleX(-1)}
+.bg-rose.r4{bottom:-70px;right:-70px;width:290px;transform:rotate(184deg)}
 @media(max-width:768px){
-  .bg-rose{opacity:.1}
-  .bg-rose.r1{width:220px;height:220px}
-  .bg-rose.r2{width:180px;height:180px}
-  .bg-rose.r3{width:200px;height:200px}
-  .bg-rose.r4{width:230px;height:230px}
+  .bg-rose{opacity:.12;width:190px}
+  .bg-rose.r2{width:160px}
+  .bg-rose.r3{width:180px}
+  .bg-rose.r4{width:200px}
 }
 
 /* ================= CORNER FLORAL ORNAMENTS ================= */
-.corner-rose{position:absolute;top:2px;right:2px;width:84px;height:84px;pointer-events:none;z-index:0}
-.corner-rose svg{width:100%;height:100%;display:block}
-#hero .corner-rose{width:70px;height:70px}
-.family-card .corner-rose,.ev-card .corner-rose,.cal-card .corner-rose,.rsvp-card .corner-rose{width:60px;height:60px;opacity:.7}
+/* single-bloom corner cluster — used on content cards; mirrored so the bloom hugs the top-right corner */
+.corner-rose{position:absolute;top:0;right:0;width:64px;height:auto;pointer-events:none;z-index:0;opacity:.9}
+.corner-rose img{width:100%;height:auto;display:block;transform:scaleX(-1)}
 @media(max-width:600px){
-  .corner-rose{width:52px;height:52px}
-  #hero .corner-rose{width:46px;height:46px}
-  .family-card .corner-rose,.ev-card .corner-rose,.cal-card .corner-rose,.rsvp-card .corner-rose{width:44px;height:44px}
+  .corner-rose{width:46px}
+}
+/* cascading spray — used on focal sections (envelope intro, hero) */
+.corner-spray{position:absolute;top:0;right:0;width:126px;height:auto;pointer-events:none;z-index:0}
+.corner-spray img{width:100%;height:auto;display:block}
+#hero .corner-spray{width:104px}
+@media(max-width:600px){
+  .corner-spray{width:86px}
+  #hero .corner-spray{width:74px}
+}
+@media(max-width:380px){
+  .corner-spray{width:74px}
+  #hero .corner-spray{width:64px}
 }
 
 /* ============ MOBILE RESPONSIVE ============ */
@@ -475,29 +483,17 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 </head>
 <body>
 
-<!-- ================= REUSABLE BOTANICAL ARTWORK ================= -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="roseBloom" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="36" fill="var(--paper)" stroke="var(--sage)" stroke-width="1" opacity=".9"/>
-      <path d="M50 18 C66 24 74 40 69 53 C64 66 50 72 50 72 C50 72 36 66 31 53 C26 40 34 24 50 18Z" fill="var(--paper)" stroke="var(--olive)" stroke-width="1"/>
-      <path d="M50 29 C59 33 63 43 61 51 C59 59 50 64 50 64 C50 64 41 59 39 51 C37 43 41 33 50 29Z" fill="var(--cream-deep)" stroke="var(--gold-light)" stroke-width=".8"/>
-      <circle cx="50" cy="48" r="6" fill="var(--gold)"/>
-    </symbol>
-  </defs>
-</svg>
-
 <!-- ================= AMBIENT BACKGROUND ROSES ================= -->
 <div class="bg-roses" aria-hidden="true">
-  <svg class="bg-rose r1"><use href="#roseBloom"/></svg>
-  <svg class="bg-rose r2"><use href="#roseBloom"/></svg>
-  <svg class="bg-rose r3"><use href="#roseBloom"/></svg>
-  <svg class="bg-rose r4"><use href="#roseBloom"/></svg>
+  <img class="bg-rose r1" src="assets/flowers/rose-spray.png" alt="" loading="lazy">
+  <img class="bg-rose r2" src="assets/flowers/rose-spray.png" alt="" loading="lazy">
+  <img class="bg-rose r3" src="assets/flowers/rose-corner.png" alt="" loading="lazy">
+  <img class="bg-rose r4" src="assets/flowers/rose-corner.png" alt="" loading="lazy">
 </div>
 
 <!-- ================= ENVELOPE INTRO ================= -->
 <div id="intro">
-  <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+  <div class="corner-spray"><img src="assets/flowers/rose-spray.png" alt=""></div>
 
   <div class="ornament"><span class="heart">♥</span></div>
   <div class="cordial">You Are Cordially Invited</div>
@@ -533,7 +529,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
 
   <!-- HERO -->
   <section id="hero">
-    <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+    <div class="corner-spray"><img src="assets/flowers/rose-spray.png" alt=""></div>
     <div class="hero-eyebrow reveal">Together With Their Families</div>
     <h1 class="hero-names reveal">Kavini</h1>
     <div class="hero-together reveal">
@@ -612,14 +608,14 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
     </div>
     <div class="family-wrap reveal">
       <div class="family-card">
-        <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+        <div class="corner-rose"><img src="assets/flowers/rose-corner.png" alt="" loading="lazy"></div>
         <div class="family-name">Kavini</div>
         <div class="family-rel">Beloved Daughter of</div>
         <div class="family-parents">Mr. Kapila Wijesinhe<br>&amp;<br>Mrs. Chandrika Wijeweera</div>
       </div>
       <div class="together-badge">&amp;</div>
       <div class="family-card">
-        <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+        <div class="corner-rose"><img src="assets/flowers/rose-corner.png" alt="" loading="lazy"></div>
         <div class="family-name">Nuwan</div>
         <div class="family-rel">Beloved Son of</div>
         <div class="family-parents">Mr. Ariyadasa<br>&amp;<br>Mrs. Sudharma Chandrani</div>
@@ -638,7 +634,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
       </div>
       <div class="event-cards">
         <div class="ev-card reveal">
-          <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+          <div class="corner-rose"><img src="assets/flowers/rose-corner.png" alt="" loading="lazy"></div>
           <div class="ev-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V10l8-6 8 6v11M4 21h16M8 21v-8h8v8M12 4v3"/></svg>
           </div>
@@ -648,7 +644,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
           <span class="ev-chip">✦ Nekath Time — 10:02 AM</span>
         </div>
         <div class="ev-card reveal">
-          <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+          <div class="corner-rose"><img src="assets/flowers/rose-corner.png" alt="" loading="lazy"></div>
           <div class="ev-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 22h8M12 22v-5M5 4h14l-1.5 6.2a5.6 5.6 0 01-11 0L5 4zM7 4c0-1 .8-2 2-2h6c1.2 0 2 1 2 2"/></svg>
           </div>
@@ -660,7 +656,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
       </div>
       <!-- CALENDAR VIEW -->
       <div class="cal-card reveal">
-        <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+        <div class="corner-rose"><img src="assets/flowers/rose-corner.png" alt="" loading="lazy"></div>
         <div class="cal-month">September</div>
         <div class="cal-year">2 0 2 6</div>
         <div class="cal-grid">
@@ -711,7 +707,7 @@ footer{position:relative;z-index:1;text-align:center;padding:70px 20px 120px;bac
     </div>
     <p class="rsvp-quote reveal">“We are so grateful to have you as part of our story, and we cannot wait to celebrate this joyful day surrounded by the people we love most.”</p>
     <div class="rsvp-card reveal">
-      <div class="corner-rose"><svg><use href="#roseBloom"/></svg></div>
+      <div class="corner-rose"><img src="assets/flowers/rose-corner.png" alt="" loading="lazy"></div>
       <div class="rsvp-deadline">Kindly RSVP by <b>16th August 2026</b></div>
       <div class="rsvp-sub">Your presence would mean the world to us — kindly let us know you're coming.</div>
 
